@@ -9,7 +9,7 @@
         <a class="nav-link" href="{{route('students.index')}}">Students list</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('students.create')}}">Form</a>
+        <a class="nav-link" href="{{route('students.create')}}">Add new student</a>
       </li>
       {{-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>

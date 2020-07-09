@@ -10,7 +10,7 @@
                               <h5 class="card-title">Registration number: {{$student->registration_number}} </h5>
                         </div>
                         <ul class="list-group list-group-flush ">
-                            <li class="list-group-item bg-primary ">{{$student->name}} {{$student->surname}}</li>
+                            <li class="list-group-item bg-primary "> {{$student->name}} {{$student->surname}}</li>
                             <li class="list-group-item bg-primary">ID: {{$student->id}}</li>
                             <li class="list-group-item bg-primary">Email: {{$student->email}}</li>
                       </ul>
