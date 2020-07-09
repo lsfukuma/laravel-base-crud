@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
+        @include('../partials.menu')
         @yield('content')
         <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     </body>

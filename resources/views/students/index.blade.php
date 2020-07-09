@@ -1,4 +1,4 @@
-@extends('../layouts.app');
+@extends('../layouts.app')
 @section('page-title', 'CRUD Students index' )
 @section('content')
     <div class="container">
@@ -12,6 +12,7 @@
                               <th scope="col">Surname</th>
                               <th scope="col">Registration number</th>
                               <th scope="col">Email</th>
+                              <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +24,8 @@
                               <td>{{$student->surname}}</td>
                               <td>{{$student->registration_number}}</td>
                               <td>{{$student->email}}</td>
+                              <td> <a class="btn btn-outline-info btn-sm" href="{{route('students.show', $student['id'])}}">Details</a>
+                              </td>
                         </tr>
                         @endforeach
                     </tbody>
