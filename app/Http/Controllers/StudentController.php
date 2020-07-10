@@ -36,6 +36,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData= $request->validate([
+            'name' => 'required|max:100',
+            'surname' => 'required|max:100',
+            'registration_number' => 'required|alpha_num|size:8',
+            'email' => 'required|email:rfc'
+        ]);
         $data = $request-> all();
         $newStudent = new Student;
         $newStudent-> fill($data);
@@ -60,9 +66,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -74,7 +80,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request-> all();
+        $student = Students::find($id);
+        $student->update($data);
+        return redirect()->route('students.index');
     }
 
     /**

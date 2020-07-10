@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         @foreach ($students as $student)
 
                         <tr>
@@ -26,6 +26,7 @@
                               <td>{{$student->registration_number}}</td>
                               <td>{{$student->email}}</td>
                               <td> <a class="btn btn-outline-info btn-sm" href="{{route('students.show', $student['id'])}}">Details</a>
+                                  <a class="btn btn-outline-warning btn-sm"href="{{route('students.edit',$student['id'])}}">Modify</a>
                               </td>
                         </tr>
                         @endforeach

@@ -1,19 +1,10 @@
 @extends('layouts.app')
-@section('page-title', 'Table')
+@section('page-title', 'Modify student details')
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>  @foreach ($errors->all() as $error)
-                            <li> {{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                @endif
-                <form action="{{route('students.store')}}" method="post">
+            <div class="col-8">
+                <form action="{{route('students.edit')}}" method="post">
                     @csrf
                     <div class="form-group">
                     <label for="name">Name</label>
@@ -26,8 +17,10 @@
                     <input type="email" class="form-control mb-2" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                   </div>
 
-                  <button type="submit" class="btn btn-info">Submit</button>
+                  <button type="submit" class="btn btn-info">Update</button>
                 </form>
+                      <a class="btn btn-danger btn-sm"href="{{route('students.update', [$student->id])}}">Delete</a>
+                </div>
             </div>
         </div>
     </div>
