@@ -37,8 +37,8 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $validatedData= $request->validate([
-            'name' => 'required|max:100',
-            'surname' => 'required|max:100',
+            'name' => 'required|max:50',
+            'surname' => 'required|max:50',
             'registration_number' => 'required|alpha_num|size:8',
             'email' => 'required|email:rfc'
         ]);
@@ -68,7 +68,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-                return view('students.edit', compact('student'));
+        if ($student) {
+            return view('students.edit', compact('student'));
+        }
+        return abort('404');
     }
 
     /**
@@ -81,8 +84,8 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:100',
-            'surname' => 'required|max:100',
+            'name' => 'required|max:50',
+            'surname' => 'required|max:50',
             'registration_number' => 'required|alpha_num|size:8',
             'email' => 'required|email:rfc'
         ]);
@@ -97,8 +100,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index' , $student);
     }
 }

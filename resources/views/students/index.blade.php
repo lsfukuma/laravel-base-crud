@@ -17,19 +17,31 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($students as $student)
+                        @forelse ($students as $student)
+                            <tr>
+                                  <th scope="row">{{$student->id}}</th>
+                                  <td>{{$student->name}}</td>
+                                  <td>{{$student->surname}}</td>
+                                  <td>{{$student->registration_number}}</td>
+                                  <td>{{$student->email}}</td>
+                                  <td> <a class="btn btn-outline-info btn-sm mr-2" href="{{route('students.show', $student['id'])}}">Details</a>
+                                      <a class="btn btn-outline-warning btn-sm " href="{{route('students.edit', $student['id'])}}">Modify</a>
+                                      <form class="btn" action="{{route('students.destroy', $student['id'])}}" method="post">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-outline-danger btn-sm d-inline-block" name="button">Delete</button>
 
-                        <tr>
-                              <th scope="row">{{$student->id}}</th>
-                              <td>{{$student->name}}</td>
-                              <td>{{$student->surname}}</td>
-                              <td>{{$student->registration_number}}</td>
-                              <td>{{$student->email}}</td>
-                              <td> <a class="btn btn-outline-info btn-sm" href="{{route('students.show', $student['id'])}}">Details</a>
-                                  <a class="btn btn-outline-warning btn-sm" href="{{route('students.edit',$student['id'])}}">Modify</a>
-                              </td>
-                        </tr>
-                        @endforeach
+                                      </form>
+
+                                  </td>
+                            </tr>
+                        @empty
+                            <div class="">
+                                Your database is empty
+                            </div>
+                        @endforelse ($students as $student)
+
+
                     </tbody>
                 </table>
             </div>
